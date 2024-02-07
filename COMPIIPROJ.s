@@ -67,9 +67,9 @@ continue_loop:
     j loop
 	
 done:	
-	#li $v0, 1       # Print the result
-    #move $a0, $t5
-    #syscall
+	li $v0, 1       # Print the result
+    move $a0, $t5
+    syscall
 	
     li $v0, 10      # Exit program
     syscall
