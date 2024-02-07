@@ -21,14 +21,14 @@ main:
 	
 	move $s0, $a0   # Preserve the original pointer to the string
 	
-	li $v0, 4       # Print string will be removed!!!
-    la $a0, my_string
-    syscall
+	#li $v0, 4       # Print string will be removed!!!
+    #la $a0, my_string
+    #syscall
 
 	
-	li $v0, 4       # Print string will from register will be removed!!!
-    move $a0, $s0
-    syscall
+	#li $v0, 4       # Print string will from register will be removed!!!
+    #move $a0, $s0
+    #syscall
 	
 	
 	# Initialize position and multiplier
