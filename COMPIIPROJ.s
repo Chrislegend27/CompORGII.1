@@ -23,7 +23,7 @@ main:
 	
 	
 	
-	# Initialize position and multiplier
+	# Initialize accumulator
 	li $t5, 0       #Accumulator where items will be stored.
 
 loop:
@@ -32,11 +32,9 @@ loop:
 	
 	beq $t0, 10, continue_loop  # Skip newline characters
 	
-	#beq $t0, '-', process_negative
-	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
-	add $t5, $t5, $t1 # Add integer to the Accumulator
+	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
 	
 	li $v0, 1       # Print current character
     move $a0, $t1
@@ -48,7 +46,7 @@ loop:
     syscall
 
 	
-	# Update position for loop
+	#Jumps to beginning of loop
 	j continue_loop
 	
 	
