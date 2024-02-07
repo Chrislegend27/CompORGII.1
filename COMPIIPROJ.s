@@ -48,10 +48,13 @@ loop:
 
 	
 	# Update position for loop
-    addi $s0, $s0, 1
-	j loop
+	j continue_loop
 	
 process_negative:
+    j continue_loop
+	
+continue_loop:
+    addi $s0, $s0, 1
     j loop
 	
 done:	
