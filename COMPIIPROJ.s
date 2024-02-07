@@ -52,7 +52,8 @@ loop:
 
 	
 	# Update position for loop
-    addi $t3, $t3, 1
+    addi $s0, $s0, 1
+	j loop
 done:	
 	li $v0, 1       # Print the result
     move $a0, $t5
