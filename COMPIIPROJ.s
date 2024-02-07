@@ -25,9 +25,23 @@ main:
     la $a0, my_string
     syscall
 	
-	li $v0, 4       # Print string will from register!!!
+	li $v0, 4       # Print string will from register will be removed!!!
     move $a0, $s0
     syscall
+	
+	
+	# Initialize position and multiplier
+	li $t5, 0       #Accumulator where items will be stored.
+	li $t3, 0       # Position
+loop:
+	lb $t0, 0($s0)
+	beq $t0, $zero, done
+	
+	sub $t1, $t0, '0'  # Convert the character to integer
 
+	
+	# Update position for loop
+    addi $t3, $t3, 1
+	
     li $v0, 10      # Exit program
     syscall
