@@ -53,7 +53,7 @@ loop:
 	beq $t0, 71, add_16 #G
 	beq $t0, 103, add_16 #g
 	
-	beq $t0, 47, add_16
+	beq $t0, 47, delimiter
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
@@ -102,6 +102,11 @@ delimiter:
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
+	
+	
+	li $v0, 11
+	la, $a0, 47
+	syscall
 	
 	
 	j continue_loop
