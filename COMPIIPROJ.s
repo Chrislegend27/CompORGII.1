@@ -15,9 +15,13 @@ main:
     la $a0, newline
     syscall
 	
-	li $v0, 8     # Print newline
+	li $v0, 8     # Reading string
     la $a0, my_string
     syscall
+	
+	move $s0, $a0   # Preserve the original pointer to the string
+	
+	
 
     li $v0, 10      # Exit program
     syscall
