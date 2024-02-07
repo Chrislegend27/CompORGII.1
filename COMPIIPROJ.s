@@ -38,8 +38,11 @@ loop:
 	beq $t0, 66, add_11 #B
 	beq $t0, 98, add_11 #b
 	
-	beq $t0, 67, add_11 #C
-	beq $t0, 99, add_11 #c
+	beq $t0, 67, add_12 #C
+	beq $t0, 99, add_12 #c
+	
+	beq $t0, 68, add_13 #D
+	beq $t0, 100, add_13 #d
 	
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
