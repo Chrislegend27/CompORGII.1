@@ -37,14 +37,15 @@ loop:
 	li $v0, 1       # Print current character
     move $a0, $t1
     syscall
-
 	
-print_newline:
+	
 	li $v0, 4       # Print newline
     la $a0, newline
     syscall
+
 	
-	addi $s0, $s0, 1
+	# Update position for loop
+    addi $s0, $s0, 1
 	j loop
 	
 done:	
