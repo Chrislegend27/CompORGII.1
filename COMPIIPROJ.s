@@ -108,6 +108,8 @@ delimiter:
 	la, $a0, 47
 	syscall
 	
+	li $t5, 0
+	
 	
 	j continue_loop
 	
