@@ -27,14 +27,14 @@ main:
 	li $t5, 0       #Accumulator where items will be stored.
 	li $t3, 0       # Position
 loop:
-	lb $t0, 0($s0)
-	beq $t0, $zero, done
+	lb $t0, 0($s0) #Load each index of string
+	beq $t0, $zero, done #Exit loop at end of string
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
 	add $t5, $t5, $t1 # Add integer to the Accumulator
 	
-	li $v0, 1       # Print the result
+	li $v0, 1       # Print current character
     move $a0, $t1
     syscall
 	
@@ -46,10 +46,11 @@ loop:
 	# Update position for loop
     addi $s0, $s0, 1
 	j loop
+	
 done:	
-	li $v0, 1       # Print the result
-    move $a0, $t5
-    syscall
+	#li $v0, 1       # Print the result
+    #move $a0, $t5
+    #syscall
 	
     li $v0, 10      # Exit program
     syscall
