@@ -14,6 +14,10 @@ main:
 	li $v0, 4       # Print newline
     la $a0, newline
     syscall
+	
+	li $v0, 8     # Print newline
+    la $a0, my_string
+    syscall
 
     li $v0, 10      # Exit program
     syscall
