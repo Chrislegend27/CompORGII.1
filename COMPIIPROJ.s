@@ -25,6 +25,10 @@ main:
     la $a0, my_string
     syscall
 	
+	li $v0, 4       # Print newline
+    la $a0, newline
+    syscall
+	
 	li $v0, 4       # Print string will from register will be removed!!!
     move $a0, $s0
     syscall
