@@ -51,16 +51,6 @@ loop:
 	# Update position for loop
 	j continue_loop
 	
-#process_negative:
-	#li $v0, 1       # Print the result
-    #move $a0, $t1
-    #syscall
-
-    #li $v0, 4       # Print newline
-   # la $a0, newline
-    #syscall
-	
-    #j continue_loop
 	
 continue_loop:
     addi $s0, $s0, 1
