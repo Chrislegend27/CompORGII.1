@@ -47,8 +47,11 @@ loop:
 	beq $t0, 69, add_14 #E
 	beq $t0, 101, add_14 #e
 	
-	beq $t0, 70, add_14 #F
-	beq $t0, 102, add_14 #f
+	beq $t0, 70, add_15 #F
+	beq $t0, 102, add_15 #f
+	
+	beq $t0, 71, add_16 #G
+	beq $t0, 103, add_16 #g
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
@@ -85,6 +88,11 @@ add_14:
 	
 add_15:
 	li $t1, 15
+	add $t5, $t5, $t1
+	j continue_loop
+	
+add_16:
+	li $t1, 16
 	add $t5, $t5, $t1
 	j continue_loop
 	
