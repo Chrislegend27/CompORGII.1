@@ -38,6 +38,10 @@ loop:
 	beq $t0, 66, add_11 #B
 	beq $t0, 98, add_11 #b
 	
+	beq $t0, 67, add_11 #C
+	beq $t0, 99, add_11 #c
+	
+	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
@@ -53,6 +57,11 @@ add_10:
 
 add_11:
 	li $t1, 11
+	add $t5, $t5, $t1
+	j continue_loop
+
+add_12:
+	li $t1, 12
 	add $t5, $t5, $t1
 	j continue_loop
 	
