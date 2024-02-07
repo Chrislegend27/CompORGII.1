@@ -54,5 +54,10 @@ loop:
 	# Update position for loop
     addi $t3, $t3, 1
 done:	
+
+	li $v0, 1       # Print the result
+    move $a0, $t5
+    syscall
+	
     li $v0, 10      # Exit program
     syscall
