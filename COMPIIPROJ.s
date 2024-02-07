@@ -25,10 +25,13 @@ main:
 	
 	# Initialize position and multiplier
 	li $t5, 0       #Accumulator where items will be stored.
-	li $t3, 0       # Position
+
 loop:
 	lb $t0, 0($s0) #Load each index of string
 	beq $t0, $zero, done #Exit loop at end of string
+	
+	
+	beq $t0, '-', process_negative
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
@@ -47,6 +50,9 @@ loop:
 	# Update position for loop
     addi $s0, $s0, 1
 	j loop
+	
+process_negative:
+    j loop
 	
 done:	
 	#li $v0, 1       # Print the result
