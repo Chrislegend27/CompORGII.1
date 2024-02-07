@@ -44,6 +44,11 @@ loop:
 	beq $t0, 68, add_13 #D
 	beq $t0, 100, add_13 #d
 	
+	beq $t0, 69, add_14 #E
+	beq $t0, 101, add_14 #e
+	
+	beq $t0, 70, add_14 #F
+	beq $t0, 102, add_14 #f
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
