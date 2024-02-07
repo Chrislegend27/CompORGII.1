@@ -24,10 +24,7 @@ main:
 	li $v0, 4       # Print string will be removed!!!
     la $a0, my_string
     syscall
-	
-	li $v0, 4       # Print newline
-    la $a0, newline
-    syscall
+
 	
 	li $v0, 4       # Print string will from register will be removed!!!
     move $a0, $s0
@@ -47,6 +44,10 @@ loop:
 	
 	li $v0, 1       # Print the result
     move $a0, $t1
+    syscall
+	
+	li $v0, 4       # Print newline
+    la $a0, newline
     syscall
 
 	
