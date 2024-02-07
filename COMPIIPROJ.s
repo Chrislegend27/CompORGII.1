@@ -35,15 +35,6 @@ loop:
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
-	
-	li $v0, 1       # Print current character
-    move $a0, $t1
-    syscall
-	
-	
-	li $v0, 4       # Print newline
-    la $a0, newline
-    syscall
 
 	
 	#Jumps to beginning of loop
