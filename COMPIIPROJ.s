@@ -67,6 +67,11 @@ add_12:
 	li $t1, 12
 	add $t5, $t5, $t1
 	j continue_loop
+
+add_13:
+	li $t1, 13
+	add $t5, $t5, $t1
+	j continue_loop
 	
 continue_loop:
     addi $s0, $s0, 1
