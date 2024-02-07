@@ -30,8 +30,9 @@ loop:
 	lb $t0, 0($s0) #Load each index of string
 	beq $t0, $zero, done #Exit loop at end of string
 	
+	beq $t0, 10, continue_loop  # Skip newline characters
 	
-	beq $t0, '-', process_negative
+	#beq $t0, '-', process_negative
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
@@ -50,16 +51,16 @@ loop:
 	# Update position for loop
 	j continue_loop
 	
-process_negative:
-	li $v0, 1       # Print the result
-    move $a0, $t1
-    syscall
+#process_negative:
+	#li $v0, 1       # Print the result
+    #move $a0, $t1
+    #syscall
 
-    li $v0, 4       # Print newline
-    la $a0, newline
-    syscall
+    #li $v0, 4       # Print newline
+   # la $a0, newline
+    #syscall
 	
-    j continue_loop
+    #j continue_loop
 	
 continue_loop:
     addi $s0, $s0, 1
