@@ -37,11 +37,17 @@ loop:
 	lb $t0, 0($s0)
 	beq $t0, $zero, done
 	
-	sub $t1, $t0, '0'  # Convert the character to integer
+	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
+	
+	add $t5, $t5, $t1 # Add integer to the Accumulator
+	
+	li $v0, 1       # Print the result
+    move $a0, $t1
+    syscall
 
 	
 	# Update position for loop
     addi $t3, $t3, 1
-	
+done:	
     li $v0, 10      # Exit program
     syscall
