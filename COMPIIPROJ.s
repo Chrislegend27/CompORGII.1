@@ -31,8 +31,12 @@ loop:
 	beq $t0, $zero, done #Exit loop at end of string
 	
 	beq $t0, 10, continue_loop  # Skip newline characters
+	
 	beq $t0, 65, add_10 #A
-	beq $t0, 65, add_10 #a
+	beq $t0, 97, add_10 #a
+	
+	beq $t0, 66, add_11 #B
+	beq $t0, 98, add_11 #b
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
@@ -44,6 +48,11 @@ loop:
 	
 add_10:
 	li $t1, 10
+	add $t5, $t5, $t1
+	j continue_loop
+
+add_11:
+	li $t1, 11
 	add $t5, $t5, $t1
 	j continue_loop
 	
