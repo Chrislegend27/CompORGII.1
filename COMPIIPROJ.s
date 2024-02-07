@@ -10,6 +10,10 @@ main:
     li $v0, 4       # Print input prompt
     la $a0, input_prompt
     syscall
+	
+	li $v0, 4       # Print newline
+    la $a0, newline
+    syscall
 
     li $v0, 10      # Exit program
     syscall
