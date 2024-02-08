@@ -80,9 +80,7 @@ loop:
 	li $t5, 0   #Reset accumulator
 	
 	j skip_to_next_delimiter
-	
-	#Jumps to beginning of loop
-	j continue_loop
+
 	
 add_10:
 	li $t1, 10
