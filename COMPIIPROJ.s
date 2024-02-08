@@ -144,9 +144,18 @@ numerical:
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
 	j continue_loop
 	
+skip_to_next_delimiter:
+    lb $t0, 0($s0) # Load the next character
+    beq $t0, 47, continue_loop  # If the character is a delimiter '/', continue the loop
+    beq $t0, $zero, done       # If the character is null (end of string), exit
+    addi $s0, $s0, 1           # Move to the next character
+    j skip_to_next_delimiter   # Repeat the process until the next delimiter is found
+	
 continue_loop:
     addi $s0, $s0, 1
     j loop
+
+
 	
 
 	
