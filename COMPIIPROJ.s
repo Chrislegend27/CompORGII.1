@@ -30,8 +30,10 @@ loop:
 	lb $t0, 0($s0) #Load each index of string
 	beq $t0, $zero, done #Exit loop at end of string
 	
+	#Checks what type of character is loaded into register $t0 
 	
-	#If character is alphabetical, numerical, delimiter, or newline branch
+	
+	#If char is Alphabetical, newline, delimiter or numerical branch:
 	beq $t0, 10, continue_loop  # Skip newline characters
 	
 	beq $t0, 65, add_10 #A
@@ -57,16 +59,16 @@ loop:
 	
 	beq $t0, 47, delimiter
 	
-	beq $t0, 48, numerical #0
-	beq $t0, 49, numerical #1
-	beq $t0, 50, numerical #2
-	beq $t0, 51, numerical #3
-	beq $t0, 52, numerical #4
-	beq $t0, 53, numerical #5
-	beq $t0, 54, numerical #6
-	beq $t0, 55, numerical #7
-	beq $t0, 56, numerical #8
-	beq $t0, 57, numerical #9
+	beq $t0, 48, numerical
+	beq $t0, 49, numerical
+	beq $t0, 50, numerical
+	beq $t0, 51, numerical
+	beq $t0, 52, numerical
+	beq $t0, 53, numerical
+	beq $t0, 54, numerical
+	beq $t0, 55, numerical
+	beq $t0, 56, numerical
+	beq $t0, 57, numerical
 	
 	#Else:
 	li $v0, 11  #Print -
@@ -80,7 +82,7 @@ loop:
 	li $t5, 0   #Reset accumulator
 	
 	j skip_to_next_delimiter
-
+	
 	
 add_10:
 	li $t1, 10
@@ -123,20 +125,21 @@ delimiter:
     syscall
 	
 	
-	li $v0, 11
+	
+	li $v0, 11  #Print /
 	la, $a0, 47
 	syscall
 	
-	li $t5, 0
+	li $t5, 0   #Reset accumulator
 	
 	
 	j continue_loop
-
+	
 numerical: 
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
 	j continue_loop
-	
+
 skip_to_next_delimiter:
     lb $t0, 0($s0) # Load the next character
     beq $t0, 47, continue_loop  # If the character is a delimiter '/', continue the loop
@@ -144,7 +147,8 @@ skip_to_next_delimiter:
     addi $s0, $s0, 1           # Move to the next character
     j skip_to_next_delimiter   # Repeat the process until the next delimiter is found
 	
-continue_loop:
+	
+continue_loop: #Increments loop by one 
     addi $s0, $s0, 1
     j loop
 	
