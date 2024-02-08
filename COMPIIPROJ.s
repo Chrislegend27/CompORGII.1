@@ -57,11 +57,16 @@ loop:
 	
 	beq $t0, 47, delimiter
 	
-	beq $t0, 48, numerical
-	beq $t0, 49, numerical
-	beq $t0, 50, numerical
-	beq $t0, 51, numerical
-	beq $t0, 52, numerical
+	beq $t0, 48, numerical #0
+	beq $t0, 49, numerical #1
+	beq $t0, 50, numerical #2
+	beq $t0, 51, numerical #3
+	beq $t0, 52, numerical #4
+	beq $t0, 53, numerical
+	beq $t0, 54, numerical
+	beq $t0, 55, numerical
+	beq $t0, 56, numerical
+	beq $t0, 57, numerical
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
