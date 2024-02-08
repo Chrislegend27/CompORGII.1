@@ -62,11 +62,11 @@ loop:
 	beq $t0, 50, numerical #2
 	beq $t0, 51, numerical #3
 	beq $t0, 52, numerical #4
-	beq $t0, 53, numerical
-	beq $t0, 54, numerical
-	beq $t0, 55, numerical
-	beq $t0, 56, numerical
-	beq $t0, 57, numerical
+	beq $t0, 53, numerical #5
+	beq $t0, 54, numerical #6
+	beq $t0, 55, numerical #7
+	beq $t0, 56, numerical #8
+	beq $t0, 57, numerical #9
 	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
