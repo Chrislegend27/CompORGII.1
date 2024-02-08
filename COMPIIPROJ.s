@@ -30,6 +30,8 @@ loop:
 	lb $t0, 0($s0) #Load each index of string
 	beq $t0, $zero, done #Exit loop at end of string
 	
+	
+	#If character is alphabetical, numerical, delimiter, or newline branch
 	beq $t0, 10, continue_loop  # Skip newline characters
 	
 	beq $t0, 65, add_10 #A
