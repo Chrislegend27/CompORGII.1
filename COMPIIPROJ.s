@@ -5,7 +5,7 @@ my_string:      .space 1000
 
 .text
 .globl main
-
+#Changed file name to mips.s now
 main:
     li $v0, 4       # Print input prompt
     la $a0, input_prompt
