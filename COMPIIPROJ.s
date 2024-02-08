@@ -68,6 +68,11 @@ loop:
 	beq $t0, 56, numerical #8
 	beq $t0, 57, numerical #9
 	
+	#Else:
+	li $v0, 11  #Print -
+	la, $a0, 45
+	syscall
+	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
