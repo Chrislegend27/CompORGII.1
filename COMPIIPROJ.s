@@ -57,6 +57,12 @@ loop:
 	
 	beq $t0, 47, delimiter
 	
+	beq $t0, 48, numerical
+	beq $t0, 49, numerical
+	beq $t0, 50, numerical
+	beq $t0, 51, numerical
+	beq $t0, 52, numerical
+	
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
