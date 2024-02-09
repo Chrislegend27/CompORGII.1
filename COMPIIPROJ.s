@@ -75,11 +75,13 @@ loop:
 	
 	
 add_10:
+	li $t6, 1
 	li $t1, 10
 	add $t5, $t5, $t1
 	j continue_loop
 
 add_11:
+	li $t6, 1
 	li $t1, 11
 	add $t5, $t5, $t1
 	j continue_loop
@@ -90,6 +92,7 @@ add_12:
 	j continue_loop
 
 add_13:
+	li $t6, 1
 	li $t1, 13
 	add $t5, $t5, $t1
 	j continue_loop
@@ -100,6 +103,7 @@ add_14:
 	j continue_loop
 	
 add_15:
+	li $t6, 1
 	li $t1, 15
 	add $t5, $t5, $t1
 	j continue_loop
@@ -109,10 +113,6 @@ add_16:
 	add $t5, $t5, $t1
 	j continue_loop
 
-zero_j: 
-	li $t1, 0 
-	add $t5, $t5, $t1
-	j continue_loop
 	
 delimiter:
 	
