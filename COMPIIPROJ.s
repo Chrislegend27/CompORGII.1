@@ -87,6 +87,7 @@ add_11:
 	j continue_loop
 
 add_12:
+	li $t6, 1
 	li $t1, 12
 	add $t5, $t5, $t1
 	j continue_loop
@@ -98,6 +99,7 @@ add_13:
 	j continue_loop
 	
 add_14:
+	li $t6, 1
 	li $t1, 14
 	add $t5, $t5, $t1
 	j continue_loop
@@ -116,7 +118,7 @@ add_16:
 
 	
 delimiter:
-	
+	bne $t6, 49, pdashdelim #If no valid characters were read print -.
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
@@ -146,6 +148,9 @@ pdashdelim:
 	li $v0, 11  #Print -
 	la, $a0, 47
 	syscall 
+	
+	li $t6, 0
+	li $t5, 0
 	
 	j continue_loop
 	
