@@ -117,7 +117,6 @@ add_16:
 	
 delimiter:
 	
-	bne $t6, 49, pdash #If no valid characters were read print -.
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
@@ -139,39 +138,26 @@ numerical:
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
 	j continue_loop
 	
-pdash:
+pdashdelim:
 	li $v0, 11  #Print -
 	la, $a0, 45
 	syscall 
 	
-	li $v0, 11  #Print /
+	li $v0, 11  #Print -
 	la, $a0, 47
-	syscall
+	syscall 
 	
-	li $t6, 0
-	li $t5, 0
 	j continue_loop
 	
 
 continue_loop: #Increments loop by one 
     addi $s0, $s0, 1
     j loop
-
-pdashdone:
-	li $v0, 11  #Print -
-	la, $a0, 45
-	syscall 
 	
-	li $t6, 0
-	li $t5, 0
-	j exit
 done:	
-	bne $t6, 49, pdash #If no valid characters were read print -.
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
 	
-	j exit
-exit:
     li $v0, 10      # Exit program
     syscall
