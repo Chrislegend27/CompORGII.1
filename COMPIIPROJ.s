@@ -156,11 +156,25 @@ pdash:
 continue_loop: #Increments loop by one 
     addi $s0, $s0, 1
     j loop
+
+pdashdone:
+	li $v0, 11  #Print -
+	la, $a0, 45
+	syscall 
 	
+	li $v0, 11  #Print /
+	la, $a0, 47
+	syscall
+	
+	li $t6, 0
+	li $t5, 0
+	j done
 done:	
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
 	
+	j exit
+
     li $v0, 10      # Exit program
     syscall
