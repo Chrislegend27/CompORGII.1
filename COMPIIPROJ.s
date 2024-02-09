@@ -162,19 +162,16 @@ pdashdone:
 	la, $a0, 45
 	syscall 
 	
-	li $v0, 11  #Print /
-	la, $a0, 47
-	syscall
-	
 	li $t6, 0
 	li $t5, 0
-	j done
+	j exit
 done:	
+	bne $t6, 49, pdash #If no valid characters were read print -.
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
 	
 	j exit
-
+exit:
     li $v0, 10      # Exit program
     syscall
