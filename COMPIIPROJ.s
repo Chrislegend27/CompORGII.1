@@ -5,7 +5,8 @@ my_string:      .space 1000
 
 .text
 .globl main
-#Changed file name to mips.s now
+#Change file name to mips.s now
+
 main:
     li $v0, 4       # Print input prompt
     la $a0, input_prompt
@@ -33,8 +34,7 @@ loop:
 	#Checks what type of character is loaded into register $t0 
 	
 	
-	#If char is Alphabetical, newline, delimiter or numerical branch:
-	beq $t0, 10, continue_loop  # Skip newline characters
+	#If char is Alphabetical, delimiter or numerical branch:
 	
 	beq $t0, 65, add_10 #A
 	beq $t0, 97, add_10 #a
@@ -59,7 +59,7 @@ loop:
 	
 	beq $t0, 47, delimiter
 	
-	beq $t0, 48, numerical
+	beq $t0, 48, numerical #0
 	beq $t0, 49, numerical
 	beq $t0, 50, numerical
 	beq $t0, 51, numerical
@@ -70,18 +70,8 @@ loop:
 	beq $t0, 56, numerical
 	beq $t0, 57, numerical
 	
-	#Else:
-	li $v0, 11  #Print -
-	la, $a0, 45
-	syscall
-	
-	li $v0, 11  #Print /
-	la, $a0, 47
-	syscall
-	
-	li $t5, 0   #Reset accumulator
-	
-	j skip_to_next_delimiter
+	#Else: will skip
+	j continue_loop
 	
 	
 add_10:
@@ -118,8 +108,14 @@ add_16:
 	li $t1, 16
 	add $t5, $t5, $t1
 	j continue_loop
+
+zero_j: 
+	li $t1, 0 
+	add $t5, $t5, $t1
+	j continue_loop
 	
 delimiter:
+	
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
@@ -139,15 +135,13 @@ numerical:
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
 	j continue_loop
+	
+pdash:
+	li $v0, 11  #Print -
+	la, $a0, 45
+	syscall
+	
 
-skip_to_next_delimiter:
-    lb $t0, 0($s0) # Load the next character
-    beq $t0, 47, continue_loop  # If the character is a delimiter '/', continue the loop
-    beq $t0, $zero, done       # If the character is null (end of string), exit
-    addi $s0, $s0, 1           # Move to the next character
-    j skip_to_next_delimiter   # Repeat the process until the next delimiter is found
-	
-	
 continue_loop: #Increments loop by one 
     addi $s0, $s0, 1
     j loop
