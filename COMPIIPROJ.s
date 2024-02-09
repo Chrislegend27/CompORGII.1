@@ -109,6 +109,7 @@ add_15:
 	j continue_loop
 	
 add_16:
+	li $t6, 1
 	li $t1, 16
 	add $t5, $t5, $t1
 	j continue_loop
@@ -132,6 +133,7 @@ delimiter:
 	j continue_loop
 	
 numerical: 
+	li $t6, 1
 	sub $t1, $t0, '0'  # Convert the character to integer and store in $t1 
 	add $t5, $t5, $t1 # Add integer to the Accumulator which is in $t5
 	j continue_loop
