@@ -118,7 +118,7 @@ add_16:
 
 	
 delimiter:
-	bne $t6, 49, pdashdelim #If no valid characters were read print -.
+	bne $t6, 1, pdashdelim #If no valid characters were read print -.
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
@@ -130,7 +130,7 @@ delimiter:
 	syscall
 	
 	li $t5, 0   #Reset accumulator
-	
+	li $t6, 0   #Reset valid checker
 	
 	j continue_loop
 	
@@ -145,7 +145,7 @@ pdashdelim:
 	la, $a0, 45
 	syscall 
 	
-	li $v0, 11  #Print -
+	li $v0, 11  #Print /
 	la, $a0, 47
 	syscall 
 	
@@ -153,16 +153,29 @@ pdashdelim:
 	li $t5, 0
 	
 	j continue_loop
-	
 
 continue_loop: #Increments loop by one 
     addi $s0, $s0, 1
     j loop
+
+pdash:
+	li $v0, 11  #Print -
+	la, $a0, 45
+	syscall 
+	
+	li $t6, 0
+	li $t5, 0
+	
+	j exit
 	
 done:	
+	
+	bne $t6, 1, pdash
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
 	
+	j exit
+exit:
     li $v0, 10      # Exit program
     syscall
