@@ -24,9 +24,12 @@ main:
 	
 	
 	
-	# Initialize accumulator
-	li $t5, 0       #Accumulator where items will be stored.
 
+	jal proccess_whole_string
+	
+proccess_whole_string:
+	li $t5, 0       #Accumulator where items will be stored.
+	
 loop:
 	lb $t0, 0($s0) #Load each index of string
 	beq $t0, $zero, done #Exit loop at end of string
@@ -117,8 +120,8 @@ add_16:
 	j continue_loop
 
 	
-delimiter:
-	bne $t6, 1, pdashdelim #If no valid characters were read print -.
+delimiter: #Proccess substring
+	bne $t6, 1, pdashdelim #If no valid characters were read print -. 
 	li $v0, 1       # Print the result
     move $a0, $t5
     syscall
